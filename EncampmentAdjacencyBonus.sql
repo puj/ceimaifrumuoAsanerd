@@ -4,4 +4,4 @@ INSERT INTO District_Adjacencies (DistrictType, YieldChangeId) VALUES ('DISTRICT
 INSERT INTO Adjacency_YieldChanges (ID, Description, YieldType, YieldChange, TilesRequired, AdjacentImprovement)
   VALUES ("Pasture_Gold",	"LOC_DISTRICT_PASTURE_GOLD",	"YIELD_GOLD",	"1",	"1",	"IMPROVEMENT_PASTURE");
 INSERT INTO Adjacency_YieldChanges (ID, Description, YieldType, YieldChange, TilesRequired, AdjacentImprovement)
-    VALUES ("Camp_Gold",	"LOC_DISTRICT_PASTURE_GOLD",	"YIELD_GOLD",	"1",	"1",	"IMPROVEMENT_CAMP");
+    VALUES ("Camp_Gold",	"LOC_DISTRICT_CAMP_GOLD",	"YIELD_GOLD",	"1",	"1",	"IMPROVEMENT_CAMP");
