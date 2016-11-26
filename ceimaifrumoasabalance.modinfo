@@ -12,14 +12,16 @@
   <References />
   <Blocks />
   <Files>
-	<File>LighthouseChanges.sql</File>
-	<File>UnitUpdates.sql</File>
+	<File>EncampmentAdjacencyBonus.sql.sql</File>
+	<File>GoodyHutsBonuses.sql</File>
+  <File>BuildingsGreatWorksAddSlots.sql</File>
   </Files>
 	<Components>
 		<UpdateDatabase id="HB_BALANCE_COMPONENT">
 			<Items>
-        <File>LighthouseChanges.sql</File>
-      	<File>UnitUpdates.sql</File>
+        <File>EncampmentAdjacencyBonus.sql.sql</File>
+      	<File>GoodyHutsBonuses.sql</File>
+        <File>BuildingsGreatWorksAddSlots.sql</File>
 			</Items>
 		</UpdateDatabase>
 		<LocalizedText id="HB_BALANCE__UPDATES">
