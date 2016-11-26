@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mod id="6ee26158-82e4-44e7-889f-76566174029d" version="1">
+<Mod id="6eg26158-82e4-44e7-889f-76566174029d" version="1">
   <Properties>
     <Name>CeiMaiFrumoasas Improvement Mod</Name>
     <Stability>Alpha</Stability>
@@ -12,22 +12,18 @@
   <References />
   <Blocks />
   <Files>
-	<File>EncampmentAdjacencyBonus.sql.sql</File>
-	<File>GoodyHutsBonuses.sql</File>
-  <File>BuildingsGreatWorksAddSlots.sql</File>
+  	<File>EncampmentAdjacencyBonus.sql</File>
+  	<File>GoodyHutsBonuses.sql</File>
+    <File>BuildingsGreatWorksAddSlots.sql</File>
   </Files>
 	<Components>
-		<UpdateDatabase id="HB_BALANCE_COMPONENT">
+		<UpdateDatabase id="CMAI_BALANCE_COMPONENT">
 			<Items>
-        <File>EncampmentAdjacencyBonus.sql.sql</File>
-      	<File>GoodyHutsBonuses.sql</File>
+        <File>EncampmentAdjacencyBonus.sql</File>
+        <File>GoodyHutsBonuses.sql</File>
         <File>BuildingsGreatWorksAddSlots.sql</File>
 			</Items>
 		</UpdateDatabase>
-		<LocalizedText id="HB_BALANCE__UPDATES">
-			<Items>
-				<File>TextUpdates.sql</File>
-			</Items>
-		</LocalizedText>
+
 	</Components>
 </Mod>
