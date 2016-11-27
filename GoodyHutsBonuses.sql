@@ -101,7 +101,7 @@ UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT
 
 -- Military
 UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SCOUT';
-UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_UPGRADE';
+UPDATE GoodyHutSubTypes SET Weight = '0' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_UPGRADE';
 UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_EXPERIENCE';
 UPDATE GoodyHutSubTypes SET Weight = '0' WHERE SubTypeGoodyHut = 'GOODYHUT_HEAL';
 UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_RANGED_UNIT';
@@ -116,11 +116,42 @@ UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_TWO_
 UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_TECH_BOOST';
 
 -- Survivors
-UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
-UPDATE GoodyHutSubTypes SET Weight = '25' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_BUILDER';
-UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
-UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
-UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SPY';
+UPDATE GoodyHutSubTypes SET Weight = '100' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
+UPDATE GoodyHutSubTypes SET Weight = '100' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_BUILDER';
+UPDATE GoodyHutSubTypes SET Weight = '100' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
+UPDATE GoodyHutSubTypes SET Weight = '100' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
+
+
+-- Remove traders from other survivors
+UPDATE GoodyHutSubTypes SET Trader = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
+UPDATE GoodyHutSubTypes SET Trader = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_BUILDER';
+UPDATE GoodyHutSubTypes SET Trader = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
+UPDATE GoodyHutSubTypes SET Trader = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
+
+
+
+-- UPDATE GoodyHutSubTypes SET Weight = '100' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_UPGRADE';
+-- UPDATE GoodyHutSubTypes SET Weight = '0' WHERE SubTypeGoodyHut <> 'GOODYHUT_GRANT_UPGRADE';
+-- INSERT INTO GoodyHutSubTypes SELECT "GOODYHUT_GOLD", "GOLD_" || SubTypeGoodyHut, "GOLD_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_GRANT_UPGRADE";
+-- INSERT INTO GoodyHutSubTypes SELECT "GOODYHUT_MILITARY", "MILITARY_" || SubTypeGoodyHut, "MILITARY_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_GRANT_UPGRADE";
+-- INSERT INTO GoodyHutSubTypes SELECT "GOODYHUT_SCIENCE", "SCIENCE_" || SubTypeGoodyHut, "SCIENCE_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_GRANT_UPGRADE";
+-- INSERT INTO GoodyHutSubTypes SELECT "GOODYHUT_CULTURE", "CULTURE_" || SubTypeGoodyHut, "CULTURE_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_GRANT_UPGRADE";
+-- INSERT INTO GoodyHutSubTypes SELECT "GOODYHUT_FAITH", "FAITH_" || SubTypeGoodyHut, "FAITH_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_GRANT_UPGRADE";
+-- INSERT INTO GoodyHutSubTypes SELECT "GOODYHUT_SURVIVOR", "SURVIVOR_" || SubTypeGoodyHut, "SURVIVOR_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_GRANT_UPGRADE";
+
+-- create table IF NOT EXISTS temp( GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit );
+
+-- delete from temp where 1=1;
+
+-- INSERT INTO temp SELECT "GOODYHUT_GOLD", "GOLD_" || SubTypeGoodyHut, "GOLD_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_ADD_POP";
+-- INSERT INTO temp SELECT "GOODYHUT_MILITARY", "MILITARY_" || SubTypeGoodyHut, "MILITARY_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_ADD_POP";
+-- INSERT INTO temp SELECT "GOODYHUT_CULTURE", "CULTURE_" || SubTypeGoodyHut, "CULTURE_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_ADD_POP";
+-- INSERT INTO temp SELECT "GOODYHUT_FAITH", "FAITH_" || SubTypeGoodyHut, "FAITH_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_ADD_POP";
+-- INSERT INTO temp SELECT "GOODYHUT_SURVIVOR", "SURVIVOR_" || SubTypeGoodyHut, "SURVIVOR_" || Description, Weight, ModifierID, UpgradeUnit, Turn, Experience, Heal, Relic, Trader, MinOneCity, RequiresUnit   FROM GoodyHutSubTypes WHERE SubTypeGoodyHut = "GOODYHUT_ADD_POP";
+--
+-- delete from GoodyHutSubTypes WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
+
+-- insert into GoodyHutSubTypes select * from temp;
 
 
 -- change goody huts frequency, initially it was 128
