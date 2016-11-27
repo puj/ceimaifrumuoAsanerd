@@ -116,10 +116,10 @@ UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_TWO_
 UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_TECH_BOOST';
 
 -- Survivors
-UPDATE GoodyHutSubTypes SET Weight = '45' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
 UPDATE GoodyHutSubTypes SET Weight = '25' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_BUILDER';
 UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
-UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
+UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
 UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SPY';
 
 
