@@ -10,11 +10,11 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
 
 -- add spy bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
-  VALUES ('GOODYHUT_SURVIVOR', 'GOODYHUT_GRANT_SPY', 'NEW SPY IN YOUR CITY', '5', 'GOODY_SURVIVOR_GRANT_SPY');
-INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
-  VALUES ('GOODY_SURVIVOR_GRANT_SPY', 'MODIFIER_PLAYER_GRANT_SPY', '1', '1');
+  VALUES ('GOODYHUT_GOLD', 'GOODYHUT_GRANT_SPY', 'NEW SPY IN YOUR CITY', '5', 'GOODYHUT_GOLD_GRANT_SPY');
+INSERT INTO Modifiers (ModifierId, ModifierType)
+  VALUES ('GOODYHUT_GOLD_GRANT_SPY', 'MODIFIER_PLAYER_GRANT_SPY');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_SURVIVOR_GRANT_SPY', 'Amount', 'ARGTYPE_IDENTITY', '1');
+   VALUES ('GOODYHUT_GOLD_GRANT_SPY', 'Amount', 'ARGTYPE_IDENTITY', '1');
 
 -- add ranged unit bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
