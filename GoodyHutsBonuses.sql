@@ -9,8 +9,8 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
   VALUES ('GOODY_CULTURE_LARGE_MODIFIER', 'Amount', 'ARGTYPE_IDENTITY', '100');
 
 -- add spy bonus to goody huts
-INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
-  VALUES ('GOODYHUT_SURVIVOR', 'GOODY_GRANT_SPY', 'NEW SPY IN YOUR CITY', '5', 'GOODY_SURVIVOR_GRANT_SPY', '1');
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_SURVIVOR', 'GOODY_GRANT_SPY', 'NEW SPY IN YOUR CITY', '5', 'GOODY_SURVIVOR_GRANT_SPY');
 INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
   VALUES ('GOODY_SURVIVOR_GRANT_SPY', 'MODIFIER_PLAYER_GRANT_SPY', '1', '1');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
@@ -31,6 +31,14 @@ INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
   VALUES ('GOODY_MILITARY_GRANT_MELEE_UNIT', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_BY_CLASS_IN_NEAREST_CITY', '1', '1');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
   VALUES ('GOODY_MILITARY_GRANT_MELEE_UNIT', 'UnitPromotionClassType', 'ARGTYPE_IDENTITY', 'PROMOTION_CLASS_MELEE');
+
+-- add light cavalry unit bonus to goody huts
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
+  VALUES ('GOODYHUT_MILITARY', 'GOODY_GRANT_LIGHT_CAVALRY_UNIT', 'NEW CAVALRY UNIT IN YOUR CITY', '10', 'GOODY_MILITARY_GRANT_LIGHT_CAVALRY_UNIT', '1');
+INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
+  VALUES ('GOODY_MILITARY_GRANT_LIGHT_CAVALRY_UNIT', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_BY_CLASS_IN_NEAREST_CITY', '1', '1');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_MILITARY_GRANT_LIGHT_CAVALRY_UNIT', 'UnitPromotionClassType', 'ARGTYPE_IDENTITY', 'PROMOTION_CLASS_LIGHT_CAVALRY');
 
 -- add great merchant points bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
