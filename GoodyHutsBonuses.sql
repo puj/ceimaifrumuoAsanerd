@@ -120,7 +120,7 @@ UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_
 UPDATE GoodyHutSubTypes SET Weight = '35' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_BUILDER';
 UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
 UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
-
+UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SPY';
 
 
 -- change goody huts frequency, initially it was 128
