@@ -80,19 +80,51 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
   VALUES ('GOODY_FAITH_GREAT_PROPHET_POINTS', 'Amount', 'ARGTYPE_IDENTITY', '20');
 
--- update the weights for the goody huts
-UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_SMALL_GOLD';
-UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_SMALL_FAITH';
-UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_GOLD';
+-- Culture
+UPDATE GoodyHutSubTypes SET Weight = '25' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_RELIC';
+UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_TWO_CIVIC_BOOSTS';
+UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_CIVIC_BOOST';
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODHUT_LARGE_CULTURE';
+
+-- Faith
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_FAITH';
 UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_MEDIUM_FAITH';
+UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_SMALL_FAITH';
+UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODHUT_GREAT_PROPHET_POINTS';
+
+-- Gold
+UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_GOLD';
+UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_MEDIUM_GOLD';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_SMALL_GOLD';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODHUT_GREAT_MERCHANT_POINTS';
+UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SPY';
+
+-- Military
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SCOUT';
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_UPGRADE';
 UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_EXPERIENCE';
 UPDATE GoodyHutSubTypes SET Weight = '0' WHERE SubTypeGoodyHut = 'GOODYHUT_HEAL';
-UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
-UPDATE GoodyHutSubTypes SET Weight = '25' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_RELIC';
-UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_FAITH';
+UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODHUT_GRANT_RANGED_UNIT';
+UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODHUT_GRANT_MELEE_UNIT';
+UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODHUT_GRANT_LIGHT_CAVALRY_UNIT';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODHUT_GREAT_ENGINEER_POINTS';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODHUT_GREAT_GENERAL_POINTS';
+
+-- Science
 UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_TECH';
-UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_UPGRADE';
+UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_TWO_TECH_BOOSTS';
+UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_TECH_BOOST';
+
+-- Survivors
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_ADD_POP';
+UPDATE GoodyHutSubTypes SET Weight = '35' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_BUILDER';
+UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_TRADER';
 UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
+
+
 
 -- change goody huts frequency, initially it was 128
 UPDATE Improvements SET TilesPerGoody = '105' WHERE ImprovementType = 'IMPROVEMENT_GOODY_HUT';
+
+-- Recalibrate the weights in the goodhut table
+UPDATE GoodyHuts SET weight = (SELECT SUM(Weight)   FROM GoodyHutSubTypes   WHERE GoodyHuts.GoodyHutType = GoodyHut GROUP BY GoodyHut);
