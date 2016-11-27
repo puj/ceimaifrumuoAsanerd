@@ -10,33 +10,27 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
 
 -- add spy bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
-  VALUES ('GOODYHUT_MILITARY', 'GOODY_GRANT_SPY', 'LOC_GOODYHUT_MILITARY_GRANT_SPY', '5', 'GOODY_MILITARY_GRANT_SPY', '1');
+  VALUES ('GOODYHUT_SURVIVOR', 'GOODY_GRANT_SPY', 'LOC_GOODYHUT_SURVIVOR_GRANT_SPY', '5', 'GOODY_SURVIVOR_GRANT_SPY', '1');
 INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
-  VALUES ('GOODY_MILITARY_GRANT_SPY', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_IN_NEAREST_CITY', '1', '1');
+  VALUES ('GOODY_SURVIVOR_GRANT_SPY', 'MODIFIER_PLAYER_GRANT_SPY', '1', '1');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_MILITARY_GRANT_SPY', 'UnitType', 'ARGTYPE_IDENTITY', 'UNIT_SPY');
-INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_MILITARY_GRANT_SPY', 'Amount', 'ARGTYPE_IDENTITY', '1');
+  VALUES ('GOODY_SURVIVOR_GRANT_SPY', 'Amount', 'ARGTYPE_IDENTITY', '1');
 
--- add great general bonus to goody huts
+-- add ranged unit bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
-  VALUES ('GOODYHUT_MILITARY', 'GOODY_GRANT_GREAT_GENERAL', 'LOC_GOODYHUT_MILITARY_GRANT_GREAT_GENERAL', '5', 'GOODY_MILITARY_GRANT_GREAT_GENERAL', '1');
+  VALUES ('GOODYHUT_MILITARY', 'GOODY_GRANT_RANGED_UNIT', 'LOC_GOODYHUT_MILITARY_GRANT_RANGED_UNIT', '10', 'GOODY_MILITARY_GRANT_RANGED_UNIT', '1');
 INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
-  VALUES ('GOODY_MILITARY_GRANT_GREAT_GENERAL', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_IN_NEAREST_CITY', '1', '1');
+  VALUES ('GOODY_MILITARY_GRANT_RANGED_UNIT', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_BY_CLASS_IN_NEAREST_CITY', '1', '1');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_MILITARY_GRANT_GREAT_GENERAL', 'UnitType', 'ARGTYPE_IDENTITY', 'UNIT_MODERN_ART');
-INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_MILITARY_GRANT_GREAT_GENERAL', 'Amount', 'ARGTYPE_IDENTITY', '1');
+  VALUES ('GOODY_MILITARY_GRANT_RANGED_UNIT', 'UnitPromotionClassType', 'ARGTYPE_IDENTITY', 'PROMOTION_CLASS_RANGED');
 
--- add scynthian horse archer bonus to goody huts
+-- add melee unit bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
-  VALUES ('GOODYHUT_MILITARY', 'GOODY_GRANT_SCYTHIAN_HORSE_ARCHER', 'LOC_GOODYHUT_MILITARY_GRANT_SCYTHIAN_HORSE_ARCHER', '10', 'GOODY_MILITARY_GRANT_SCYTHIAN_HORSE_ARCHER', '1');
+  VALUES ('GOODYHUT_MILITARY', 'GOODY_GRANT_MELEE_UNIT', 'LOC_GOODYHUT_MILITARY_GRANT_MELEE_UNIT', '10', 'GOODY_MILITARY_GRANT_MELEE_UNIT', '1');
 INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
-  VALUES ('GOODY_MILITARY_GRANT_SCYTHIAN_HORSE_ARCHER', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_IN_NEAREST_CITY', '1', '1');
+  VALUES ('GOODY_MILITARY_GRANT_MELEE_UNIT', 'MODIFIER_SINGLE_CITY_GRANT_UNIT_BY_CLASS_IN_NEAREST_CITY', '1', '1');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_MILITARY_GRANT_SCYTHIAN_HORSE_ARCHER', 'UnitType', 'ARGTYPE_IDENTITY', 'UNIT_SCYTHIAN_HORSE_ARCHER');
-INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
-  VALUES ('GOODY_MILITARY_GRANT_SCYTHIAN_HORSE_ARCHER', 'Amount', 'ARGTYPE_IDENTITY', '1');
+  VALUES ('GOODY_MILITARY_GRANT_MELEE_UNIT', 'UnitPromotionClassType', 'ARGTYPE_IDENTITY', 'PROMOTION_CLASS_MELEE');
 
 -- add great merchant points bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
@@ -57,6 +51,16 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
   VALUES ('GOODY_GREAT_ENGINEER_POINTS', 'GreatPersonClassType', 'ARGTYPE_IDENTITY', 'GREAT_PERSON_CLASS_ENGINEER');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
   VALUES ('GOODY_GREAT_ENGINEER_POINTS', 'Amount', 'ARGTYPE_IDENTITY', '10');
+
+-- add great general points bonus to goody huts
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_MILITARY', 'GOODY_GREAT_GENERAL_POINTS', 'LOC_GOODYHUT_GREAT_GENERAL_POINTS', '15', 'GOODY_GREAT_GENERAL_POINTS');
+INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
+  VALUES ('GOODY_GREAT_GENERAL_POINTS', 'MODIFIER_PLAYER_ADJUST_GREAT_PERSON_POINTS', '1', '1');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_GREAT_GENERAL_POINTS', 'GreatPersonClassType', 'ARGTYPE_IDENTITY', 'GREAT_PERSON_CLASS_GENERAL');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_GREAT_GENERAL_POINTS', 'Amount', 'ARGTYPE_IDENTITY', '15');
 
 -- add great prophet points bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
@@ -82,5 +86,5 @@ UPDATE GoodyHutSubTypes SET Weight = '55' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_
 UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_UPGRADE';
 UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SETTLER';
 
--- change goodies to be one to 25 tiles, not 128
+-- change goody huts frequency, initially it was 128
 UPDATE Improvements SET TilesPerGoody = '105' WHERE ImprovementType = 'IMPROVEMENT_GOODY_HUT';
