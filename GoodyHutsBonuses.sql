@@ -155,7 +155,7 @@ UPDATE GoodyHutSubTypes SET Trader = '0' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT
 
 
 -- change goody huts frequency, initially it was 128
-UPDATE Improvements SET TilesPerGoody = '105' WHERE ImprovementType = 'IMPROVEMENT_GOODY_HUT';
+UPDATE Improvements SET TilesPerGoody = '90' WHERE ImprovementType = 'IMPROVEMENT_GOODY_HUT';
 
 -- Recalibrate the weights in the goodhut table
 UPDATE GoodyHuts SET weight = (SELECT SUM(Weight)   FROM GoodyHutSubTypes   WHERE GoodyHuts.GoodyHutType = GoodyHut GROUP BY GoodyHut);
