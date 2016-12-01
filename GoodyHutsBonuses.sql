@@ -16,6 +16,7 @@ INSERT INTO Modifiers (ModifierId, ModifierType)
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
    VALUES ('GOODYHUT_GOLD_GRANT_SPY', 'Amount', 'ARGTYPE_IDENTITY', '1');
 
+
 -- add ranged unit bonus to goody huts
 INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID, RequiresUnit)
   VALUES ('GOODYHUT_MILITARY', 'GOODYHUT_GRANT_RANGED_UNIT', 'NEW RANGED UNIT IN YOUR CITY', '10', 'GOODY_MILITARY_GRANT_RANGED_UNIT', '1');
@@ -80,24 +81,66 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
   VALUES ('GOODY_FAITH_GREAT_PROPHET_POINTS', 'Amount', 'ARGTYPE_IDENTITY', '1');
 
+-- add great writer points bonus to goody huts
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_CULTURE', 'GOODYHUT_GREAT_WRITER_POINTS', '2 GREAT WRITER POINTS', '15', 'GOODY_CULTURE_GREAT_WRITER_POINTS');
+INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
+  VALUES ('GOODY_CULTURE_GREAT_WRITER_POINTS', 'MODIFIER_PLAYER_ADJUST_GREAT_PERSON_POINTS', '1', '1');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_CULTURE_GREAT_WRITER_POINTS', 'GreatPersonClassType', 'ARGTYPE_IDENTITY', 'GREAT_PERSON_CLASS_WRITER');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_CULTURE_GREAT_WRITER_POINTS', 'Amount', 'ARGTYPE_IDENTITY', '2');
+
+-- add great artist points bonus to goody huts
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_CULTURE', 'GOODYHUT_GREAT_ARTIST_POINTS', '2 GREAT ARTIST POINTS', '15', 'GOODY_CULTURE_GREAT_ARTIST_POINTS');
+INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
+  VALUES ('GOODY_CULTURE_GREAT_ARTIST_POINTS', 'MODIFIER_PLAYER_ADJUST_GREAT_PERSON_POINTS', '1', '1');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_CULTURE_GREAT_ARTIST_POINTS', 'GreatPersonClassType', 'ARGTYPE_IDENTITY', 'GREAT_PERSON_CLASS_ARTIST');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODY_CULTURE_GREAT_ARTIST_POINTS', 'Amount', 'ARGTYPE_IDENTITY', '2');
+
+-- allow to build a meeting house
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_FAITH', 'GOODYHUT_ALLOW_MEETING_HOUSE', 'BUILDING MEETING HOUSE ALLOWED', '5', 'GOODY_FAITH_MEETING_HOUSE');
+
+-- allow to build a wat
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_FAITH', 'GOODYHUT_ALLOW_WAT', 'BUILDING WAT ALLOWED', '5', 'GOODY_FAITH_WAT');
+
+-- add envoy bonus to goody huts
+INSERT INTO GoodyHutSubTypes (GoodyHut, SubTypeGoodyHut, Description, Weight, ModifierID)
+  VALUES ('GOODYHUT_GOLD', 'GOODYHUT_GRANT_INFLUNCE_TOKEN', 'NEW ENVOY', '15', 'GOODYHUT_GOLD_GRANT_INFLUENCE_TOKEN');
+INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, Permanent)
+  VALUES ('GOODYHUT_GOLD_GRANT_INFLUENCE_TOKEN', 'MODIFIER_PLAYER_GRANT_INFLUENCE_TOKEN', '0', '0');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value)
+  VALUES ('GOODYHUT_GOLD_GRANT_INFLUENCE_TOKEN', 'Amount', 'ARGTYPE_IDENTITY', '1');
+
 -- Culture
-UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_RELIC';
+UPDATE GoodyHutSubTypes SET Weight = '25' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_RELIC';
 UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_TWO_CIVIC_BOOSTS';
-UPDATE GoodyHutSubTypes SET Weight = '35' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_CIVIC_BOOST';
+UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_ONE_CIVIC_BOOST';
 UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_CULTURE';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_GREAT_WRITER_POINTS';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_GREAT_ARTIST_POINTS';
+
 
 -- Faith
 UPDATE GoodyHutSubTypes SET Weight = '35' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_FAITH';
-UPDATE GoodyHutSubTypes SET Weight = '50' WHERE SubTypeGoodyHut = 'GOODYHUT_MEDIUM_FAITH';
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_MEDIUM_FAITH';
 UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_SMALL_FAITH';
 UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GREAT_PROPHET_POINTS';
+UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_ALLOW_MEETING_HOUSE';
+UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_ALLOW_WAT';
 
 -- Gold
-UPDATE GoodyHutSubTypes SET Weight = '50' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_GOLD';
-UPDATE GoodyHutSubTypes SET Weight = '30' WHERE SubTypeGoodyHut = 'GOODYHUT_MEDIUM_GOLD';
+UPDATE GoodyHutSubTypes SET Weight = '40' WHERE SubTypeGoodyHut = 'GOODYHUT_LARGE_GOLD';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_MEDIUM_GOLD';
 UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_SMALL_GOLD';
-UPDATE GoodyHutSubTypes SET Weight = '10' WHERE SubTypeGoodyHut = 'GOODYHUT_GREAT_MERCHANT_POINTS';
+UPDATE GoodyHutSubTypes SET Weight = '15' WHERE SubTypeGoodyHut = 'GOODYHUT_GREAT_MERCHANT_POINTS';
 UPDATE GoodyHutSubTypes SET Weight = '5' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SPY';
+UPDATE GoodyHutSubTypes SET Weight = '20' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_INFLUNCE_TOKEN';
 
 -- Military
 UPDATE GoodyHutSubTypes SET Weight = '25' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT_SCOUT';
@@ -155,7 +198,7 @@ UPDATE GoodyHutSubTypes SET Trader = '0' WHERE SubTypeGoodyHut = 'GOODYHUT_GRANT
 
 
 -- change goody huts frequency, initially it was 128
-UPDATE Improvements SET TilesPerGoody = '90' WHERE ImprovementType = 'IMPROVEMENT_GOODY_HUT';
+UPDATE Improvements SET TilesPerGoody = '83' WHERE ImprovementType = 'IMPROVEMENT_GOODY_HUT';
 
 -- Recalibrate the weights in the goodhut table
 UPDATE GoodyHuts SET weight = (SELECT SUM(Weight)   FROM GoodyHutSubTypes   WHERE GoodyHuts.GoodyHutType = GoodyHut GROUP BY GoodyHut);
