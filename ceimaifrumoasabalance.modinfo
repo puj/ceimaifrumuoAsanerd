@@ -15,6 +15,7 @@
   	<File>EncampmentAdjacencyBonus.sql</File>
   	<File>GoodyHutsBonuses.sql</File>
     <File>BuildingsGreatWorksAddSlots.sql</File>
+    <File>DefaultGameParameters.sql</File>
   </Files>
 	<Components>
 		<UpdateDatabase id="CMAI_BALANCE_COMPONENT">
@@ -22,6 +23,7 @@
         <File>EncampmentAdjacencyBonus.sql</File>
         <File>GoodyHutsBonuses.sql</File>
         <File>BuildingsGreatWorksAddSlots.sql</File>
+        <File>DefaultGameParameters.sql</File>
 			</Items>
 		</UpdateDatabase>
 
